@@ -2,8 +2,8 @@
 clear
 clc
 
-load D:\Xnewm\datasets\synthetic\Jain.txt;
-X = Jain;
+load D:\Xnewm\datasets\synthetic\Pathbased.txt;
+X = Pathbased;
 labels = X(:,end);
 X(:,end) = [];
 
@@ -12,7 +12,7 @@ tic;
 % delete duplicate data
 [data, ia, ic] = unique(X,'rows');
 
-K = 9;
+K = 12;
 ND=size(data,1);
 N=ND*(ND-1)/2;
 
@@ -29,9 +29,9 @@ N=ND*(ND-1)/2;
 % Obtain the results of initial clustering
 % Input：nneigh, rho
 % Output：initial centers and results
-[cl,icl,nneigh]=initClust(rho,nneigh,distK);
-
 NCLUST=length(unique(labels));
+[cl,icl,nneigh]=initClust(rho, nneigh, distK, delta, NCLUST);
+
 if length(icl)<NCLUST
     error('Warning：the initial number of centers is too small，please reduce the value of K.');
 end
