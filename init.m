@@ -6,6 +6,8 @@ load D:\Xnewm\datasets\synthetic\Pathbased.txt;
 X = Pathbased;
 labels = X(:,end);
 X(:,end) = [];
+% for UCI data
+% X = normalize(X, "range"); 
 
 tic;
 
